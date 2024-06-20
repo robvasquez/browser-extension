@@ -3,10 +3,16 @@
   "name": "iManage Download",
   "version": "1.0.0",
   "description": "A Chrome/Edge extension built with React and TypeScript",
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting", "downloads"],
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:3000/*"],
+      "js": ["content.js"]
+    }
+  ],
   "action": {
     "default_popup": "index.html",
     "default_icon": {
@@ -19,11 +25,6 @@
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
     "128": "icons/icon128.png"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+  }
+
 }
